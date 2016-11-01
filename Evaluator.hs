@@ -1,4 +1,6 @@
-module Evaluator where
+module Evaluator (
+    evaluate
+) where
 
 import qualified Data.Map as M
 import qualified Data.Set as S
@@ -37,7 +39,7 @@ binop ::
 binop op l r e = do
     l' <- (evaluate l e)
     r' <- (evaluate r e)
-    union l' r'
+    op l' r'
 
 
 
