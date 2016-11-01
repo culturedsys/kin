@@ -8,6 +8,7 @@ import qualified Data.Map as M
 import Data.Set((\\))
 import qualified Data.Set as S
 
+type RelationName = String
 type AttributeName = String
 type Value = String
 -- Note that what relational algebra calls "tuples" are not the same as what
