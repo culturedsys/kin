@@ -19,8 +19,10 @@ data Expression = RelationVariable RelationName |
 -- strings are supported as values, and so the only condition that really
 -- makes sense is equality.
 data Condition = Equals Term Term |
+                 NotEquals Term Term |
                  AndCondition Condition Condition |
-                 OrCondition Condition Condition
+                 OrCondition Condition Condition |
+                 NotCondition Condition
 
 -- A value that can be used in a condition - either an attribute name or a 
 -- literal value.

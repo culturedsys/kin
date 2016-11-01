@@ -35,12 +35,16 @@ asciiPrinter expr = go expr False where
 asciiConditionPrinter :: Condition -> String
 asciiConditionPrinter (Equals l r) = 
     (asciiTermPrinter l) ++ "=" ++ (asciiTermPrinter r)
+asciiConditionPrinter (NotEquals l r) =
+    (asciiTermPrinter l) ++ "!=" ++ (asciiTermPrinter r)
 asciiConditionPrinter (AndCondition l r) = 
     "(" ++ asciiConditionPrinter l ++ ") AND (" ++
         asciiConditionPrinter r ++ ")"
 asciiConditionPrinter (OrCondition l r) = 
     "(" ++ asciiConditionPrinter l ++ ") OR (" ++
         asciiConditionPrinter r ++ ")"
+asciiConditionPrinter (NotCondition l) =
+    "!(" ++ asciiConditionPrinter l ++ ")"
 
 asciiTermPrinter :: Term -> String
 asciiTermPrinter (NameTerm n) = n
