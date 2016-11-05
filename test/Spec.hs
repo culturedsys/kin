@@ -1,2 +1,8 @@
+import System.Exit
+import Test.Hspec
+
+import RelationSpec
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = hspec $ do
+   describe "Relation" RelationSpec.spec
