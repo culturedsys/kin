@@ -44,7 +44,7 @@ asciiConditionPrinter (OrCondition l r) =
     "(" ++ asciiConditionPrinter l ++ ") OR (" ++
         asciiConditionPrinter r ++ ")"
 asciiConditionPrinter (NotCondition l) =
-    "!(" ++ asciiConditionPrinter l ++ ")"
+    "NOT (" ++ asciiConditionPrinter l ++ ")"
 
 asciiTermPrinter :: Term -> String
 asciiTermPrinter (NameTerm n) = n
