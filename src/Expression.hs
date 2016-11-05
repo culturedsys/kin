@@ -14,6 +14,7 @@ data Expression = RelationVariable RelationName |
                   Product Expression Expression |
                   Join Expression Expression |
                   Division Expression Expression
+                    deriving(Show)
 
 -- A condition that can be used in a selection. Note that currently only
 -- strings are supported as values, and so the only condition that really
@@ -23,7 +24,10 @@ data Condition = Equals Term Term |
                  AndCondition Condition Condition |
                  OrCondition Condition Condition |
                  NotCondition Condition
+                    deriving(Show)
 
 -- A value that can be used in a condition - either an attribute name or a 
 -- literal value.
-data Term = NameTerm AttributeName | LiteralTerm Value
+data Term = NameTerm AttributeName | LiteralTerm Value                     
+                deriving(Show)
+
