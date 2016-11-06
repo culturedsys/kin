@@ -71,7 +71,8 @@ rename nameChanges (Relation originalNames body) =
                             Nothing -> name
                             Just newName -> newName
     in
-        if not (changedNames `S.isSubsetOf` originalNames) then
+        if not (changedNames `S.isSubsetOf` originalNames) 
+            || (S.size resultNames /= S.size originalNames) then
             Nothing
         else
             Just $ Relation resultNames resultBody
