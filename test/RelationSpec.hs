@@ -131,3 +131,15 @@ spec = do
     it "joins with no common attribute names are equivalent to products" $ do
          join sample1 sample4 `shouldBe` product sample1 sample4
 
+    let sample6 = fromList ["name1", "name2"] [["1", "2"], ["1", "4"], ["2", "2"]]
+        sample7 = fromList ["name2"] [["2"], ["4"]]
+
+    it "can be divided" $ do
+        division sample6 sample7 `shouldBe` 
+            Just (fromList ["name1"] [["1"]])
+
+    it "returns Nothing when dividing by a relation containing any non-shared attributes" $ do
+        division sample1 sample4 `shouldBe`
+            Nothing
+        division sample1 sample5 `shouldBe`
+            Nothing

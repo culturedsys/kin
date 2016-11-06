@@ -8,6 +8,8 @@ import qualified Data.Map as M
 import Data.Set((\\))
 import qualified Data.Set as S
 
+import Debug.Trace
+
 type RelationName = String
 type AttributeName = String
 type Value = String
@@ -142,13 +144,14 @@ join' r@(Relation rHead _) s@(Relation sHead _) = do
     p <- select (matchAll renameList) u  
     project (rHead `S.union` sHead) p
 
--- This allows division where there are no common attributes; such divisions
--- are always empty.
 division :: Relation -> Relation -> Maybe Relation
-division r@(Relation rHead _) s@(Relation sHead _) = do
-    let rUniques = (rHead `S.difference` sHead)
-    ru <- (project rUniques r)
-    t <-  ru  `Relation.product` s
-    u <- t `difference` r
-    v <- project rUniques u
-    ru `difference` v 
+division r@(Relation rHead _) s@(Relation sHead _) = 
+    if not (sHead `S.isSubsetOf` rHead) then
+        Nothing 
+    else do
+        let rUniques = (rHead `S.difference` sHead)
+        ru <- (project rUniques r)
+        t <- ru  `Relation.product` s
+        u <- t `difference` r
+        v <- project rUniques u
+        ru `difference` v 
