@@ -115,3 +115,19 @@ spec = do
     it "returns Nothing when asked to take the product of relations with shared names" $ do
         product sample1 sample2 `shouldBe` Nothing
         product sample1 sample3 `shouldBe` Nothing        
+
+    let sample5 = fromList ["name1", "name3"] [["1", "5"], ["3", "6"]]
+
+    it "can be join-ed" $ do
+        join sample1 sample5 `shouldBe`
+            Just (fromList ["name1", "name2", "name3"]
+                           [["1", "2", "5"],
+                            ["3", "4", "6"]])
+
+    it "removes non-matching rows when joined" $ do
+        join sample1 sample3 `shouldBe`
+            Just (fromList ["name1", "name2"] [["1", "2"]])
+
+    it "joins with no common attribute names are equivalent to products" $ do
+         join sample1 sample4 `shouldBe` product sample1 sample4
+
