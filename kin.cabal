@@ -14,10 +14,11 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Relation
+  exposed-modules:     Relation, Loader
   build-depends:       base >= 4.7 && < 5
                      , containers
                      , hspec
+                     , split
   default-language:    Haskell2010
 
 executable kin-exe
