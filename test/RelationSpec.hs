@@ -2,6 +2,8 @@ module RelationSpec (
     spec
     ) where
 
+import Prelude hiding (product)
+
 import qualified Data.Map as M
 import qualified Data.Set as S
 import Test.Hspec
@@ -87,3 +89,29 @@ spec = do
     it "returns Nothing when asked to intersection incompatible relations" $ do
         intersection sample1 sample3 `shouldBe` Nothing
         intersection sample1 sample4 `shouldBe` Nothing
+
+    it "can be differenced" $ do
+        difference sample1 sample2 `shouldBe`
+            Just (fromList ["name1", "name2"] [["3", "4"]])
+
+    it "produces an empty relation when differenced with itself" $ do
+        difference sample1 sample1 `shouldBe`
+            Just (fromList ["name1", "name2"] [])
+
+    it "returns Nothing when asked to difference incompatible relations" $ do
+        difference sample1 sample3 `shouldBe` Nothing
+        difference sample1 sample4 `shouldBe` Nothing
+
+    
+    it "can be product-ed" $ do
+        product sample1 sample4 `shouldBe`
+            Just (fromList ["name1", "name2", "name3", "name4"]
+                            [["1", "2", "1", "2"],
+                             ["1", "2", "3", "4"],
+                             ["3", "4", "1", "2"],
+                             ["3", "4", "3", "4"]
+                            ])
+
+    it "returns Nothing when asked to take the product of relations with shared names" $ do
+        product sample1 sample2 `shouldBe` Nothing
+        product sample1 sample3 `shouldBe` Nothing        
