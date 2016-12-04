@@ -3,7 +3,7 @@ version:             0.1.0.0
 synopsis:            Simple relational algebra evaluation and display
 description:         Please see README.md
 homepage:            https://github.com/kulturaveshchi/kin#readme
-license:             GPL3
+license:             GPL-3
 license-file:        LICENSE
 author:              Tim Fisken
 maintainer:          contact@culture.systems
@@ -14,7 +14,7 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Relation, Loader
+  exposed-modules:     Relation, Loader, Expression, Printer
   build-depends:       base >= 4.7 && < 5
                      , containers
                      , hspec
