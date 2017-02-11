@@ -5,6 +5,7 @@ import RelationSpec
 import LoaderSpec
 import PrinterSpec
 import ParserSpec
+import EvaluatorSpec
 
 main :: IO ()
 main = hspec $ do
@@ -12,3 +13,4 @@ main = hspec $ do
    describe "Loader" LoaderSpec.spec
    describe "Printer" PrinterSpec.spec
    describe "Parser" ParserSpec.spec
+   describe "Evaluator" EvaluatorSpec.spec

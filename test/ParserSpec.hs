@@ -120,6 +120,11 @@ spec = do
         parse expression "()" "left / right" 
             `shouldBe` Right (Division (RelationVariable "left") (RelationVariable "right"))
 
+    it "can parse a union of projections" $ do
+        parse expression "()" "P[attribute1](relation1) U P[attribute2](relation2)"
+            `shouldBe` Right (Union (Projection ["attribute1"] (RelationVariable "relation1"))
+                                    (Projection ["attribute2"] (RelationVariable "relation2")))
+
     it "can parse a nested union/intersection" $ do
         parse expression "()" "(a N b) U (c N d)"
             `shouldBe` Right (Union (Intersection (RelationVariable "a") 
