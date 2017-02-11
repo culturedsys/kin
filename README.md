@@ -14,15 +14,15 @@ efficiently.
 The text syntax
 ---------------
 
-* P[attr1, attr2, ... attrn] (expr) -- projection
-* S[(attr1 = 'val' AND attr2 = attr3) OR (attr4 = 'val')] (expr) -- selection
-* R[oldname -> newname, othername->newername] (expr) -- rename
-* expr U expr -- union
-* expr N expr -- intersection
-* expr - expr -- difference
-* expr * expr -- cartesian product
-* expr >< expr -- natural join
-* expr / expr -- division 
+* `P[attr1, attr2, ... attrn](expr)` -- projection
+* `S[(attr1 = 'val' AND attr2 = attr3) OR (attr4 = 'val')](expr)` -- selection
+* `R[oldname -> newname, othername->newername](expr)` -- rename
+* `expr U expr` -- union
+* `expr N expr` -- intersection
+* `expr - expr` -- difference
+* `expr * expr` -- cartesian product
+* `expr >< expr` -- natural join
+* `expr / expr` -- division 
 
 TODO
 ----
